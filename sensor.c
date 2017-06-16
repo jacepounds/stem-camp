@@ -25,9 +25,25 @@ int main()
   {
     pulse_out(TRIGGER_PIN, 10);
     duration = pulse_in(ECHO_PIN, 1);
-    print("%C%C", HOME , CLREOL);
+    print("%c %c", HOME , CLREOL);
     distance = duration / 148;
     print("Distance = %d inches\n" , distance);
+    
+    if (distance < 9)
+    {
+    print("HOLD UP. \n EVER HEARD OF PERSONAL SPACE? %c %c CLREOL");
+    
+      high(15);
+    }
+    if (distance > 9)
+    {
+      low(15);
+      print("Yeah you better back up.%c %c CLREOL");
+      pause(500);
+     
+      
+    }                
+    
     pause(250);
     
   }  
